@@ -1,9 +1,6 @@
-
-
-
-
 import streamlit as st
 from typing import List
+# style mean colour backgroud
 st.markdown("""
 <style>
     /* Sidebar */
@@ -53,10 +50,7 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-
-
-
-# -------- City Class --------
+# City Class
 class City:
     def __init__(self, name: str, category: str, overview: str, attractions: List[str],
                  local_foods: List[str], transport_info: str, best_time_to_visit: str,
@@ -98,7 +92,7 @@ class City:
         for level in ["Economy", "Mid-range", "Luxury"]:
             st.write(self.get_budget_estimation(days, people, level))
 
-# -------- Trip Planner --------
+#  Trip Planner
 class PakistanTripPlanner:
     def __init__(self):
         self.cities = self.load_cities()
@@ -147,7 +141,6 @@ class PakistanTripPlanner:
                            "Jeeps, private vans", "May-Oct", 22, -5)
         #    "Bahawalpur": City       "Noor Mahal", "Darbar Mahal",  "Sadiq Garh Palace.", "Gulzar Mahal", "Nishat Mahal",  "Dubai Palace"]
       
-      
         }
 
     def get_city_list_by_category(self, category):
@@ -188,7 +181,7 @@ class PakistanTripPlanner:
         st.subheader(f"Famous Foods in {city}")
         for food in foods:
             st.markdown(f"- {food}")
-
+# weather
     def show_weather_page(self):
         st.title("🌦️ Live Weather (Demo)")
         city = st.selectbox("Select City", list(self.cities.keys()))
@@ -199,6 +192,7 @@ class PakistanTripPlanner:
             "Trip Planner", "Food Guide", "Train Tickets", "Live Weather",
             "Mountain Places", "Sea Places", "Big Cities", "Popular Places"
         ])
+        # now start the app trip planner
 
         if page == "Trip Planner":
             st.title("🧳 PakTrip Planner")
@@ -206,10 +200,10 @@ class PakistanTripPlanner:
             st.divider()
             self.display_city_details(city)
             self.cities[city].display_budget(days, people)
-
+# food guide page
         elif page == "Food Guide":
             self.show_foods_page()
-
+# train ticket page
         elif page == "Train Tickets":
             st.title("🚉 Train Fare Checker")
             source = st.selectbox("From", list(self.cities.keys()))
@@ -236,33 +230,7 @@ class PakistanTripPlanner:
             for city in ["Lahore", "Karachi", "Islamabad", "Hunza", "Skardu"]:
                 self.cities[city].display_details()
 
-
-# with st.sidebar:
-#     st.markdown("## Connect with the Creator")
-#     st.markdown("[![GitHub][GitHub](https://img.shields.io/badge/GitHub-BABARSHAH786-black?style=flat-square&logo=github)](https://github.com/LeezaSarwar)")
-#     st.markdown("[![LinkedIn](https://www.linkedin.com/in/leeza-sarwar-21ab61339)")
-#     st.markdown("[![X](https://x.com/LeezaSarwar?t=M3pbn1Pf-gLv8wSu0G0vBw&s=09)")
-#     st.markdown("[![WhatsApp Channel](https://img.shields.io/badge/WhatsApp-Knowledge%20%26%20Learning-green?style=flat-square&logo=whatsapp)](https://whatsapp.com/channel/0029VaCJeIA4o7qMgTLbGU34)")
-#     st.markdown("[![Website](https://img.shields.io/badge/Website-techkl.de-lightgrey?style=flat-square&logo=wordpress)](https://www.techkl.de/)")
-#     st.markdown("[![YouTube](https://img.shields.io/badge/YouTube-Knowledge%20and%20Learning-red?style=flat-square&logo=youtube)](https://www.youtube.com/@knowledgelearning9352)") 
-#     st.markdown("[![GitHub]( (mailto:leezasarwar0@gmail.com)")
-#     st.markdown("Created by: Leeza Sarwar")
- 
-# with st.sidebar:
-#     st.markdown("## Connect with the Creator")
-#     st.markdown("[![GitHub](https://img.shields.io/badge/GitHub-Leeza-black?style=flat-square&logo=github)](https://github.com/BABARSHAH786)")
-#     st.markdown("[![LinkedIn](https://img.shields.io/badge/LinkedIn-Syed%20Babar%20Ali-blue?style=flat-square&logo=linkedin)](https://www.linkedin.com/in/syed-babar-ali-024b431b0?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app)")
-#     st.markdown("[![X](https://img.shields.io/badge/X-@SyedBabarAli90-black?style=flat-square&logo=x)](https://x.com/SyedBabarAli90?s=09)")
-#     st.markdown("[![WhatsApp Channel](https://img.shields.io/badge/WhatsApp-Knowledge%20%26%20Learning-green?style=flat-square&logo=whatsapp)](https://whatsapp.com/channel/0029VaCJeIA4o7qMgTLbGU34)")
-#     st.markdown("[![Website](https://img.shields.io/badge/Website-techkl.de-lightgrey?style=flat-square&logo=wordpress)](https://www.techkl.de/)")
-#     st.markdown("[![YouTube](https://img.shields.io/badge/YouTube-Knowledge%20and%20Learning-red?style=flat-square&logo=youtube)](https://www.youtube.com/@knowledgelearning9352)") # Assuming a generic link if the provided one is not working
-#     st.markdown("---")
-#     st.markdown("Created by: Syed Babar Ali")
-
-
-
-
-
+# side bar connect with me...........  :)
 
 with st.sidebar:
     st.markdown("## Connect with the Creator")
@@ -278,9 +246,7 @@ with st.sidebar:
     st.markdown("---")
     st.markdown("Created by: Leeza Sarwar")
 
-
-
-# -------- Streamlit Run --------
+#  Streamlit Run 
 if __name__ == "__main__":
     planner = PakistanTripPlanner()
     planner.run()
